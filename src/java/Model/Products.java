@@ -16,8 +16,13 @@ public class Products {
     private int Stock;
     private String Description;
     private int CateId;
+    private String Serial_Number;
 
-    public Products(int ProductId, String ProductName, double Price, String Image, int Stock, String Description, int CateId) {
+    public Products(){
+        
+    }
+    
+    public Products(int ProductId, String ProductName, double Price, String Image, int Stock, String Description, int CateId, String Serial_Number) {
         this.ProductId = ProductId;
         this.ProductName = ProductName;
         this.Price = Price;
@@ -25,6 +30,15 @@ public class Products {
         this.Stock = Stock;
         this.Description = Description;
         this.CateId = CateId;
+        this.Serial_Number = Serial_Number;
+    }
+
+    public void setSerial_Number(String Serial_Number) {
+        this.Serial_Number = Serial_Number;
+    }
+
+    public String getSerial_Number() {
+        return Serial_Number;
     }
 
     public int getProductId() {

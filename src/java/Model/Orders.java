@@ -9,17 +9,25 @@ package Model;
  * @author dell
  */
 public class Orders {
-    int orderId, productId, userId;
-    String orderDate;
+    int orderId, userId;
+    String orderDate, status;
 
     public Orders() {
     }
 
-    public Orders(int orderId, int productId, int userId, String orderDate) {
+    public Orders(int orderId, int userId, String orderDate, String status) {
         this.orderId = orderId;
-        this.productId = productId;
+        this.status = status;
         this.userId = userId;
         this.orderDate = orderDate;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public int getOrderId() {
@@ -28,14 +36,6 @@ public class Orders {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
     }
 
     public int getUserId() {

@@ -11,13 +11,17 @@ package Model;
 public class Categories {
     private int CateId;
     private String CateName;
-    private int Stock;
+    
     private String Description;
+    
+    public Categories(){
+        
+    }
 
-    public Categories(int CateId, String CateName, int Stock, String Description) {
+    public Categories(int CateId, String CateName, String Description) {
         this.CateId = CateId;
         this.CateName = CateName;
-        this.Stock = Stock;
+        
         this.Description = Description;
     }
 
@@ -29,9 +33,7 @@ public class Categories {
         return CateName;
     }
 
-    public int getStock() {
-        return Stock;
-    }
+    
 
     public String getDescription() {
         return Description;
@@ -45,9 +47,7 @@ public class Categories {
         this.CateName = CateName;
     }
 
-    public void setStock(int Stock) {
-        this.Stock = Stock;
-    }
+    
 
     public void setDescription(String Description) {
         this.Description = Description;

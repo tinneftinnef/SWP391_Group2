@@ -10,18 +10,25 @@ package Model;
  */
 public class OrderDetails {
     int orderID, productId, quantity;
-    String price, discount;
+    double price, discount;
+    String Serial_Number;
+    int Warranty_ID;
+            
 
     public OrderDetails() {
     }
 
-    public OrderDetails(int orderID, int productId, int quantity, String price, String discount) {
+    public OrderDetails(int orderID, int productId, int quantity, double price, double discount, String Serial_Number, int Warranty_ID) {
         this.orderID = orderID;
         this.productId = productId;
         this.quantity = quantity;
         this.price = price;
         this.discount = discount;
+        this.Serial_Number = Serial_Number;
+        this.Warranty_ID = Warranty_ID;
     }
+
+    
 
     public int getOrderID() {
         return orderID;
@@ -47,20 +54,36 @@ public class OrderDetails {
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
+    }
+
+    public String getSerial_Number() {
+        return Serial_Number;
+    }
+
+    public int getWarranty_ID() {
+        return Warranty_ID;
+    }
+
+    public void setSerial_Number(String Serial_Number) {
+        this.Serial_Number = Serial_Number;
+    }
+
+    public void setWarranty_ID(int Warranty_ID) {
+        this.Warranty_ID = Warranty_ID;
     }
     
 }
