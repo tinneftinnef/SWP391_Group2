@@ -9,16 +9,25 @@ package Model;
  * @author dell
  */
 public class Status {
-    int statusId;
+    int statusId, WarrantyID;
     String statusName, description;
 
     public Status() {
     }
 
-    public Status(int statusId, String statusName, String description) {
+    public Status(int statusId, int WarrantyID, String statusName, String description) {
         this.statusId = statusId;
         this.statusName = statusName;
         this.description = description;
+        this.WarrantyID = WarrantyID;
+    }
+
+    public void setWarrantyID(int WarrantyID) {
+        this.WarrantyID = WarrantyID;
+    }
+
+    public int getWarrantyID() {
+        return WarrantyID;
     }
 
     public int getStatusId() {

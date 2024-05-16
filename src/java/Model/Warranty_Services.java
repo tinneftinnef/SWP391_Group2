@@ -9,15 +9,15 @@ package Model;
  * @author dell
  */
 public class Warranty_Services {
-    int warrantyId, StatusID, Product_ID, CustomerID;
+    int warrantyId, Product_ID, CustomerID;
     String warrantys_tart, warranty_end, Serial_Number, Des_note, image, Staff_Name, Done_date;
 
     public Warranty_Services() {
     }
 
-    public Warranty_Services(int warrantyId, int StatusID, int Product_ID, int CustomerID, String warrantys_tart, String warranty_end, String Serial_Number, String Des_note, String image, String Staff_Name, String Done_date) {
+    public Warranty_Services(int warrantyId, int Product_ID, int CustomerID, String warrantys_tart, String warranty_end, String Serial_Number, String Des_note, String image, String Staff_Name, String Done_date) {
         this.warrantyId = warrantyId;
-        this.StatusID = StatusID;
+        
         this.Product_ID = Product_ID;
         this.CustomerID = CustomerID;
         this.warrantys_tart = warrantys_tart;
@@ -33,9 +33,7 @@ public class Warranty_Services {
         return warrantyId;
     }
 
-    public int getStatusID() {
-        return StatusID;
-    }
+   
 
     public int getProduct_ID() {
         return Product_ID;
@@ -77,9 +75,7 @@ public class Warranty_Services {
         this.warrantyId = warrantyId;
     }
 
-    public void setStatusID(int StatusID) {
-        this.StatusID = StatusID;
-    }
+    
 
     public void setProduct_ID(int Product_ID) {
         this.Product_ID = Product_ID;

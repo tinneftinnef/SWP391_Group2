@@ -10,16 +10,16 @@ package Model;
  */
 public class Accounts {
     String accountName, password;
-    int roleId, accountId;
+    int roleId;
 
     public Accounts() {
     }
 
-    public Accounts(String accountName, String password, int roleId, int accountId) {
+    public Accounts(String accountName, String password, int roleId) {
         this.accountName = accountName;
         this.password = password;
         this.roleId = roleId;
-        this.accountId = accountId;
+        
     }
 
     public String getAccountName() {
@@ -46,12 +46,6 @@ public class Accounts {
         this.roleId = roleId;
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
+    
     
 }
