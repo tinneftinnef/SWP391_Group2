@@ -28,12 +28,18 @@ public class DBContext {
         try {
             String user = "sa";
             String pass = "123";
-            String url = "jdbc:sqlserver://DESKTOP-3CBV8VR:1433;databaseName=391";
+            String url = "jdbc:sqlserver://DESKTOP-3CBV8VR:1433;databaseName=swp3391";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, pass);
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    public static void main(String[] args) {
+        if((new DBContext()).connection !=null){
+            System.out.println("connect");
+        }else{
+            System.out.println("fail");
+        }
+    }
 }

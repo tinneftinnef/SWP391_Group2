@@ -9,21 +9,22 @@ package Model;
  * @author dell
  */
 public class Customers {
-    int customerID, phone;
-    String customerName, address, email, accName, password, userType;
+    int customerID;
+    String customerName, phone, address, email, accName, password;
+    int userTpye;
 
     public Customers() {
     }
 
-    public Customers(int customerID, int phone, String customerName, String address, String email, String accName, String password, String userType) {
+    public Customers(int customerID, String customerName, String phone, String address, String email, String accName, String password, int userTpye) {
         this.customerID = customerID;
-        this.phone = phone;
         this.customerName = customerName;
+        this.phone = phone;
         this.address = address;
         this.email = email;
         this.accName = accName;
         this.password = password;
-        this.userType = userType;
+        this.userTpye = userTpye;
     }
 
     public int getCustomerID() {
@@ -34,20 +35,20 @@ public class Customers {
         this.customerID = customerID;
     }
 
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
     public String getCustomerName() {
         return customerName;
     }
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getAddress() {
@@ -82,13 +83,17 @@ public class Customers {
         this.password = password;
     }
 
-    public String getUserType() {
-        return userType;
+    public int getUserTpye() {
+        return userTpye;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setUserTpye(int userTpye) {
+        this.userTpye = userTpye;
     }
+    
+
+  
+    
    
     
 }

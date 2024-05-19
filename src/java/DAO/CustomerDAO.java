@@ -10,6 +10,6 @@ import DBContext.DBContext;
  *
  * @author admin
  */
-public class UserDAO extends DBContext{
+public class CustomerDAO extends DBContext{
     
 }
