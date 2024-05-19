@@ -11,6 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -66,6 +67,7 @@ public class RegisterAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        String account = request.getParameter("account");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
@@ -81,11 +83,57 @@ public class RegisterAccount extends HttpServlet {
             request.setAttribute("erol", "vui long nhap day du thong tin");
             request.getRequestDispatcher("LoginRegister.jsp").forward(request, response);
         }else{
-            
+            if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || pass.isEmpty() || pass2.isEmpty()) {
+            request.setAttribute("account", account);
+            request.setAttribute("name", name);
+            request.setAttribute("email", email);
+            request.setAttribute("phone", phone);
+            request.setAttribute("pass", pass);
+            request.setAttribute("pass2", pass2);
+            request.setAttribute("erro", "vui long nhap day du thong tin");
+            request.getRequestDispatcher("LoginRegister.jsp").forward(request, response);
+        } else {
+            if (!pass.equals(pass2)) {
+                request.setAttribute("account", account);
+                request.setAttribute("name", name);
+                request.setAttribute("email", email);
+                request.setAttribute("phone", phone);
+                request.setAttribute("address", address);
+                request.setAttribute("err", "Passwords do not match.");
+                request.getRequestDispatcher("LoginRegister.jsp").forward(request, response);
+            } else if (!isValidPassword(pass)) {
+                request.setAttribute("account", account);
+                request.setAttribute("name", name);
+                request.setAttribute("email", email);
+                request.setAttribute("phone", phone);
+                request.setAttribute("address", address);
+                request.setAttribute("err", "Password must be over 8 characters, contain at least one uppercase letter and one special character");
+                request.getRequestDispatcher("LoginRegister.jsp").forward(request, response);
+            } else if (!isValidEmail(email)) {
+                request.setAttribute("account", account);
+                request.setAttribute("name", name);
+                request.setAttribute("email", email);
+                request.setAttribute("phone", phone);
+                request.setAttribute("address", address);
+                request.setAttribute("pass", pass);
+                request.setAttribute("pass2", pass2);
+                request.setAttribute("err", "Email must end with @gmail.com or @fpt.edu.vn");
+                request.getRequestDispatcher("LoginRegister.jsp").forward(request, response);
+            } else if (!isValidPhoneNumber(phone)) {
+                request.setAttribute("account", account);
+                request.setAttribute("name", name);
+                request.setAttribute("email", email);
+                request.setAttribute("phone", phone);
+                request.setAttribute("address", address);
+                request.setAttribute("pass", pass);
+                request.setAttribute("pass2", pass2);
+                request.setAttribute("error", "Phone number must be 10 digits and start with 0.");
+                request.getRequestDispatcher("LoginRegister.jsp").forward(request, response);
+            }
         }
                 
     }
-
+    }
     /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
@@ -94,5 +142,22 @@ public class RegisterAccount extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    private boolean isValidPassword(String pass) {
+        if (pass.length() <= 8) {
+            return false;
+        }
 
+        boolean hasUpperCase = !pass.equals(pass.toLowerCase());
+        boolean hasSpecialChar = Pattern.compile("[^a-zA-Z0-9]").matcher(pass).find();
+
+        return hasUpperCase && hasSpecialChar;
+    }
+
+    private boolean isValidEmail(String email) {
+        return email.endsWith("@gmail.com") || email.endsWith("@fpt.edu.vn");
+    }
+
+    private boolean isValidPhoneNumber(String phone) {
+        return phone.matches("0\\d{9}");
+    }
 }

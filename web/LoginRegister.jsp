@@ -17,6 +17,9 @@
             <h2>Registration</h2>
             <form action="register" method="post">
                 <div class="input-box">
+                    <input type="text" placeholder="Enter your account" name="account" required value="${account}">
+                </div>
+                <div class="input-box">
                     <input type="text" placeholder="Enter your name" name="name" required>
                 </div>
                 <div class="input-box">
