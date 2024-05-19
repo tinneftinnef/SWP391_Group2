@@ -5,6 +5,8 @@
 
 package Controller;
 
+import DAO.CustomerDAO;
+import Model.Customers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -67,6 +69,7 @@ public class RegisterAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        CustomerDAO cdao = new CustomerDAO();
         String account = request.getParameter("account");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
@@ -129,6 +132,22 @@ public class RegisterAccount extends HttpServlet {
                 request.setAttribute("pass2", pass2);
                 request.setAttribute("error", "Phone number must be 10 digits and start with 0.");
                 request.getRequestDispatcher("LoginRegister.jsp").forward(request, response);
+            } else {
+                Customers c = cdao.checkAccountByaccName(account);
+                if (c == null) {
+                    cdao.register(name, phone, address, email, account, pass);
+                    request.getRequestDispatcher("home.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("account", account);
+                    request.setAttribute("name", name);
+                    request.setAttribute("phone", phone);
+                    request.setAttribute("email", email);
+                    request.setAttribute("address", address);
+                    request.setAttribute("pass", pass);
+                    request.setAttribute("pass2", pass2);
+                    request.setAttribute("err", "Account name already exists");
+                    request.getRequestDispatcher("LoginRegister.jsp").forward(request, response);
+                }
             }
         }
                 
