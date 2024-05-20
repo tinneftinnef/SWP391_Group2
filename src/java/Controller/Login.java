@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author dell
  */
+@WebServlet("/Login")
 public class Login extends HttpServlet {
 
     /**
@@ -89,7 +90,7 @@ public class Login extends HttpServlet {
             response.sendRedirect("../Layout/index_1.html");
         } else {
             // Authentication failed
-            response.sendRedirect("../loginn.jsp");
+            response.sendRedirect("./loginn.jsp");
         }
     }
 

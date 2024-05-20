@@ -12,8 +12,6 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>Controller.Login</servlet-class>
     </servlet>
-
-
     <servlet-mapping>
         <servlet-name>RegisterAccount</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -22,10 +20,8 @@
         <servlet-name>ForgotPassword</servlet-name>
         <url-pattern>/forgotPassword</url-pattern>
     </servlet-mapping>
-   
-   
     <servlet-mapping>
-        <servlet-name>loginn</servlet-name>
+        <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
 </web-app>
