@@ -139,23 +139,31 @@ button:focus{
             Login Form
          </div>
           <form action="Login" method ="post">
+              
             <div class="field">
                 <input name="user" type="text" required>
                <span class="fas fa-user"></span>
                <label>Email or UserName</label>
             </div>
+              
+              
             <div class="field">
                <input  name="pass" type="password" required>
                <span class="fas fa-lock"></span>
                <label>Password</label>
             </div>
+              
+              
             <div class="forgot-pass">
                <a href="ForgotPAssword.jsp">Forgot Password?</a>
             </div>
+              
+              
               <button type="submit">Sign in</button>
+              
             <div class="sign-up">
                Not a member?
-               <a href="LoginRegister.jsp">signup now</a>
+               <a href="LoginRegister.jsp">sign up now</a>
             </div>
          </form>
       </div>

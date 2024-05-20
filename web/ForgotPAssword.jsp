@@ -15,7 +15,7 @@
         <link href="forgotpassword/rspassword.css" rel="stylesheet" type="text/css">
         <style>
             body {
-                background: linear-gradient(135deg, #30BD36, #5A84E6);
+                background: lightcoral;
                 font-family: sans-serif;
                 height: 100vh;
             }
