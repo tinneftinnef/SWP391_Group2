@@ -25,7 +25,7 @@ public class AccountDAO extends MyDAO {
         try {
             PreparedStatement ps; //sử dụng để thực thi truy vấn SQL
             ResultSet rs; //chứa tập kết quả chứa dữ liệu được lấy từ cơ sở dữ liệu.
-            String sql = "SELECT * FROM [SaleComputer].[dbo].[Customers] WHERE email = ?";
+            String sql = "SELECT * FROM [S391].[dbo].[Customers] WHERE email = ?";
             ps = connection.prepareStatement(sql); // tạo một PreparedStatement bằng cách sử dụng truy vấn SQL được cung cấp ( sql).
             ps.setString(1, email);
             rs = ps.executeQuery();
@@ -44,6 +44,44 @@ public class AccountDAO extends MyDAO {
         return null;
     }
     
+    public boolean updateCustomerPassword(String accName, String password) {
+        try {
+            PreparedStatement ps;
+            ResultSet rs;
+            String sql = "update [Customers] set password = ? where accName = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setString(2, accName);
+            ps.setString(1, password);
+            ps.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public Customers getCustomerID(String email) {
+        try {
+            PreparedStatement ps;
+            ResultSet rs;
+            String sql = "SELECT [CustomerID] FROM [S391].[dbo].[Customers] where Customers.accName = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Customers a = new Customers();
+                a.setCustomerID(rs.getInt(1));
+                a.setAccName(rs.getString(2));
+                a.setPassword(rs.getString(4));
+                a.setCustomerID(rs.getInt(4));
+                return a;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     
     
     
