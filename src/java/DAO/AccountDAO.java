@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
+import Model.Accounts;
 import java.util.ArrayList;
 import java.util.List;
 import Model.Customers;
@@ -17,6 +18,32 @@ import java.util.logging.Logger;
  */
 public class AccountDAO extends MyDAO {
 
+    public Accounts getAccountBy(String username, String password) {
+        try {
+            String sql = """
+                         SELECT * FROM Accounts
+                         WHERE Account_Login = ?
+                         AND Password = ?""";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            stm.setString(2, password);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                Accounts account = new Accounts();
+                account.setAcountlogin(rs.getString("Account_Login"));
+                account.setName(rs.getString("Name"));
+                account.setPass(rs.getString("Password"));
+                account.setRoleid(rs.getInt("RoleId"));
+                return account;
+            }
+        } catch (SQLException ex) {
+          
+        }
+        return null;
+    }
+        public static void main(String[] args) {
+            System.out.println( new AccountDAO().getAccountBy("Huy", "123"));
+    }
     
     //hau
     
@@ -25,7 +52,7 @@ public class AccountDAO extends MyDAO {
         try {
             PreparedStatement ps; //sử dụng để thực thi truy vấn SQL
             ResultSet rs; //chứa tập kết quả chứa dữ liệu được lấy từ cơ sở dữ liệu.
-            String sql = "SELECT * FROM [S391].[dbo].[Customers] WHERE email = ?";
+            String sql = "SELECT * FROM [swp391_Happy].[dbo].[Customers] WHERE email = ?";
             ps = connection.prepareStatement(sql); // tạo một PreparedStatement bằng cách sử dụng truy vấn SQL được cung cấp ( sql).
             ps.setString(1, email);
             rs = ps.executeQuery();
@@ -64,7 +91,7 @@ public class AccountDAO extends MyDAO {
         try {
             PreparedStatement ps;
             ResultSet rs;
-            String sql = "SELECT [CustomerID] FROM [S391].[dbo].[Customers] where Customers.accName = ?";
+            String sql = "SELECT [CustomerID] FROM [swp391_Happy].[dbo].[Customers] where Customers.email = ?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, email);
             rs = ps.executeQuery();

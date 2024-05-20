@@ -9,42 +9,58 @@ package Model;
  * @author dell
  */
 public class Accounts {
-    String accountName, password;
-    int roleId;
+    private String acountlogin;
+    private String Name;
+    private String pass;
+    private int roleid;
 
     public Accounts() {
     }
 
-    public Accounts(String accountName, String password, int roleId) {
-        this.accountName = accountName;
-        this.password = password;
-        this.roleId = roleId;
-        
+    public Accounts(String acountlogin, String Name, String pass, int roleid) {
+        this.acountlogin = acountlogin;
+        this.Name = Name;
+        this.pass = pass;
+        this.roleid = roleid;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public String getAcountlogin() {
+        return acountlogin;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void setAcountlogin(String acountlogin) {
+        this.acountlogin = acountlogin;
     }
 
-    public String getPassword() {
-        return password;
+    public String getName() {
+        return Name;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public String getPass() {
+        return pass;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
+
+    public int getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(int roleid) {
+        this.roleid = roleid;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" + "acountlogin=" + acountlogin + ", Name=" + Name + ", pass=" + pass + ", roleid=" + roleid + '}';
+    }
+
 
     
     

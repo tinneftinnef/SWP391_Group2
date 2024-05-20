@@ -8,12 +8,20 @@
         <servlet-name>ForgotPassword</servlet-name>
         <servlet-class>Controller.ForgotPassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>Controller.LoginController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterAccount</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ForgotPassword</servlet-name>
-        <url-pattern>/ForgotPassword</url-pattern>
+        <url-pattern>/forgotPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
 </web-app>
