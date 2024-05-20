@@ -5,9 +5,11 @@
         <group>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Model/Orders.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Model/Product_Serial.java</file>
+            <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/WEB-INF/web.xml</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/DAO/AccountDAO.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/DAO/UserDAO.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Controller/RegisterAccount.java</file>
+            <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/loginn.jsp</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Model/OrderDetails.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Model/Status.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/LoginRegister.jsp</file>
@@ -15,6 +17,7 @@
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Model/Categories.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/DBContext/DBContext.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/DAO/MyDAO.java</file>
+            <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Controller/LoginController.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/ForgotPAssword.jsp</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/Layout/style.css</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Model/Products.java</file>

@@ -15,12 +15,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+
 /**
  *
  * @author dell
  */
-@WebServlet("/Login")
-public class LoginController extends HttpServlet {
+public class Login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");            
+            out.println("<title>Servlet Login</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,7 +74,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
+        //processRequest(request, response);
         
         String username = request.getParameter("user");
         String password = request.getParameter("pass");
