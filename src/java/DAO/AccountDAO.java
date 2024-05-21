@@ -41,9 +41,7 @@ public class AccountDAO extends MyDAO {
         }
         return null;
     }
-        public static void main(String[] args) {
-            System.out.println( new AccountDAO().getAccountBy("Huy", "123"));
-    }
+        
     
     //hau
     /*
@@ -58,7 +56,7 @@ public class AccountDAO extends MyDAO {
         try {
             PreparedStatement ps; //sử dụng để thực thi truy vấn SQL
             ResultSet rs; //chứa tập kết quả chứa dữ liệu được lấy từ cơ sở dữ liệu.
-            String sql = "SELECT * FROM [swp391_Happy].[dbo].[Customers] WHERE email = ?";
+            String sql = "SELECT * FROM [swp391_Happy2].[dbo].[Customers] WHERE email = ?";
             ps = connection.prepareStatement(sql); // tạo một PreparedStatement bằng cách sử dụng truy vấn SQL được cung cấp ( sql).
             ps.setString(1, email);
             rs = ps.executeQuery();
@@ -97,7 +95,7 @@ public class AccountDAO extends MyDAO {
         try {
             PreparedStatement ps;
             ResultSet rs;
-            String sql = "SELECT [CustomerID] FROM [swp391_Happy].[dbo].[Customers] where Customers.email = ?";
+            String sql = "SELECT [CustomerID] FROM [swp391_Happy2].[dbo].[Customers] where Customers.email = ?";
             ps = connection.prepareStatement(sql);
             ps.setString(1, email);
             rs = ps.executeQuery();
