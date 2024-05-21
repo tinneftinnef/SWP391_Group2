@@ -46,7 +46,13 @@ public class AccountDAO extends MyDAO {
     }
     
     //hau
-    
+    /*
+        Table: Customer
+        int CustomerID, phone;
+        String CustomerName, address, email, accName, password, User_type;
+        
+    */
+        
     //tìm một khách hàng dựa trên địa chỉ email được cung cấp.
     public Customers findByEmail(String email) {
         try {

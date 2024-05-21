@@ -34,8 +34,7 @@
         <div class="container">
             <form action="forgotPassword" method="post">
                 <div class="title-text">Forgot your password?</div>
-                <p>Change your password in three easy steps. This will help you to secure your password!</p>
-
+                
                 <ol class="step-reset">
                     <li> Enter your email address below.</li>
                     <li> Our system will send you an OTP to your email.</li>
@@ -56,7 +55,10 @@
                 <hr>
                 <div class="submit-password">
                     <button class="get-password" type="submit" style="background-color: #30BD36">
-                        Get New Password
+                        
+                            Get New Password
+                        
+                        
                     </button>
                     <button class="get-password" style="background-color: #5A84E6">
                         <a class="back-login" href="loginn.jsp" style="background-color: #5A84E6">

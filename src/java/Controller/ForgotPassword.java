@@ -134,7 +134,7 @@ public class ForgotPassword extends HttpServlet {
                 message.setFrom(new InternetAddress(email));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
                 message.setSubject("Request to reset password ");
-                message.setText("Hi, for security, please verify your account with the OPT below. " 
+                message.setText("Please verify your account with the OPT below to reset your password " 
                         + "Your OTP is: " + randomOtp + ". " + "Click the link to enter otp: " + "http://localhost:9999/SWP391_Draft1/enterotp.jsp");
                 Transport.send(message);
                 System.out.println("message sent successfully");
