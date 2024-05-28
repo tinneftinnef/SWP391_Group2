@@ -5,7 +5,9 @@
 package Controller;
 
 import DAO.AccountDao;
+import DAO.CustomerDAO;
 import Model.Account;
+import Model.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -77,15 +79,19 @@ public class Login extends HttpServlet {
 
         AccountDao ac = new AccountDao();
         Account account = ac.getAccountBy(username, password);
+        CustomerDAO cdao = new CustomerDAO();
+        Customer customer = cdao.getCustomerBy(username, password);
 
         if (account != null) {
             // User authenticated successfully
             HttpSession session = request.getSession();
             session.setAttribute("account", account);
-            request.getRequestDispatcher("../index_1.html").forward(request, response);
-        } else {
+            request.getRequestDispatcher("index_1.html").forward(request, response);
+        } else if (customer != null){
             // Authentication failed
-            response.sendRedirect("../login.jsp");
+            response.sendRedirect("customer.jsp");
+        }else{
+            response.sendRedirect("login.jsp");
         }
     }
 
