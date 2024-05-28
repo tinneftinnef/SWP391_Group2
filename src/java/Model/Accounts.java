@@ -9,25 +9,32 @@ package Model;
  * @author dell
  */
 public class Accounts {
-    String accountName, password;
-    int roleId, accountId;
+    String accountLogin,name,password,roleid;
 
     public Accounts() {
     }
 
-    public Accounts(String accountName, String password, int roleId, int accountId) {
-        this.accountName = accountName;
+    public Accounts(String accountLogin, String name, String password, String roleid) {
+        this.accountLogin = accountLogin;
+        this.name = name;
         this.password = password;
-        this.roleId = roleId;
-        this.accountId = accountId;
+        this.roleid = roleid;
     }
 
-    public String getAccountName() {
-        return accountName;
+    public String getAccountLogin() {
+        return accountLogin;
     }
 
-    public void setAccountName(String accountName) {
-        this.accountName = accountName;
+    public void setAccountLogin(String accountLogin) {
+        this.accountLogin = accountLogin;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
@@ -38,20 +45,16 @@ public class Accounts {
         this.password = password;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public String getRoleid() {
+        return roleid;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRoleid(String roleid) {
+        this.roleid = roleid;
     }
+    
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
+    
+   
     
 }

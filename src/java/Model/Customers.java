@@ -9,14 +9,13 @@ package Model;
  * @author dell
  */
 public class Customers {
-    int customerID;
-    String customerName, phone, address, email, accName, password;
-    int userTpye;
+
+    String customerID,customerName, phone, address, email, accName, password,userType;
 
     public Customers() {
     }
 
-    public Customers(int customerID, String customerName, String phone, String address, String email, String accName, String password, int userTpye) {
+    public Customers(String customerID, String customerName, String phone, String address, String email, String accName, String password, String userType) {
         this.customerID = customerID;
         this.customerName = customerName;
         this.phone = phone;
@@ -24,14 +23,14 @@ public class Customers {
         this.email = email;
         this.accName = accName;
         this.password = password;
-        this.userTpye = userTpye;
+        this.userType = userType;
     }
 
-    public int getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(int customerID) {
+    public void setCustomerID(String customerID) {
         this.customerID = customerID;
     }
 
@@ -83,17 +82,13 @@ public class Customers {
         this.password = password;
     }
 
-    public int getUserTpye() {
-        return userTpye;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setUserTpye(int userTpye) {
-        this.userTpye = userTpye;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
-    
 
-  
-    
    
-    
 }

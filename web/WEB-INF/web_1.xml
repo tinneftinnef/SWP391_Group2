@@ -4,8 +4,24 @@
         <servlet-name>RegisterAccount</servlet-name>
         <servlet-class>Controller.RegisterAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManagerUser</servlet-name>
+        <servlet-class>Controller.ManagerUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerStaff</servlet-name>
+        <servlet-class>Controller.ManagerStaff</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterAccount</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerUser</servlet-name>
+        <url-pattern>/manageuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerStaff</servlet-name>
+        <url-pattern>/managerstaff</url-pattern>
     </servlet-mapping>
 </web-app>

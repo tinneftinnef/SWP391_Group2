@@ -21,14 +21,7 @@ public class CustomerDAO extends DBContext{
             st.setString(1, account);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                return new Customers(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getInt(8));
+                
             }
         } catch (Exception e) {
         }
