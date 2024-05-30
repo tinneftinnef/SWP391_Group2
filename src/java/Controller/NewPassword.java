@@ -5,24 +5,21 @@
 package Controller;
 
 import DAO.AccountDAO;
-import Model.Accounts;
-import Model.Customers;
 import java.io.IOException;
-import java.io.PrintWriter;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-
+import java.io.PrintWriter;
 /**
  *
  * @author dell
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+public class NewPassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,15 +33,15 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
+            out.println("<title>Servlet NewPassword</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet NewPassword at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,23 +73,33 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         //processRequest(request, response);
-        
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
+        HttpSession session = request.getSession();
+        String email = (String) session.getAttribute("email");
+        String newPassword = request.getParameter("password");
+        String confPassword = request.getParameter("newpassword");
 
-        AccountDAO ac = new AccountDAO();
-        Customers account = ac.LoginAccount(username, password);
+        RequestDispatcher dispatcher = null;
+        if (newPassword != null && confPassword != null && newPassword.equals(confPassword)
+                && (newPassword.length() >= 6 && newPassword.length() <= 32)
+                && (confPassword.length() >= 6 && confPassword.length() <= 32)) 
+        {
+            try {
+                AccountDAO accc = new AccountDAO();
+                accc.updateCustomerPassword(email, newPassword);
+                request.setAttribute("status", "Reset Success");
+                dispatcher = request.getRequestDispatcher("loginn.jsp");
+                dispatcher.forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        if (account != null) {
-            // User authenticated successfully
-            HttpSession session = request.getSession();
-            session.setAttribute("account", account);
-            response.sendRedirect("Layout/index_1.html");
-            
+        } else if (newPassword == null || newPassword.isEmpty() && confPassword == null || confPassword.isEmpty()) {
+            request.setAttribute("errorMessage", "Please enter your password here");
+            request.getRequestDispatcher("newPass.jsp").forward(request, response);
         } else {
-            // Authentication failed
-            response.sendRedirect("loginn.jsp");
+            request.setAttribute("status", "Reset Failed");
+            request.getRequestDispatcher("newPass.jsp").forward(request, response);
+
         }
     }
 

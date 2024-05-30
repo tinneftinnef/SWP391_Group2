@@ -18,26 +18,26 @@ import java.util.logging.Logger;
  */
 public class AccountDAO extends MyDAO {
 
-    public Accounts getAccountBy(String username, String password) {
+    public Customers LoginAccount(String email, String password) {
         try {
-            String sql = """
-                         SELECT * FROM Accounts
-                         WHERE Account_Login = ?
-                         AND Password = ?""";
-            PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, username);
-            stm.setString(2, password);
-            ResultSet rs = stm.executeQuery();
-            if (rs.next()) {
-                Accounts account = new Accounts();
-                account.setAcountlogin(rs.getString("Account_Login"));
-                account.setName(rs.getString("Name"));
-                account.setPass(rs.getString("Password"));
-                account.setRoleid(rs.getInt("RoleId"));
-                return account;
+            PreparedStatement ps;
+            ResultSet rs;
+            String sql = "SELECT * FROM [swp391_Happy2].[dbo].[Customers] where email = ? and password = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Customers a = new Customers();
+                a.setCustomerID(rs.getInt(1));
+                a.setEmail(rs.getString(2));
+                a.setPassword(rs.getString(4));
+                
+                return a;
             }
+
         } catch (SQLException ex) {
-          
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

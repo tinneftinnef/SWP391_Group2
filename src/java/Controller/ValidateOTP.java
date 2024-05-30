@@ -4,26 +4,52 @@
  */
 package Controller;
 
-import DAO.AccountDAO;
-import Model.Accounts;
-import Model.Customers;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-
 /**
  *
  * @author dell
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+public class ValidateOTP extends HttpServlet {
 
+    private static final long serialVersionUID = 1L;
+
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String value = request.getParameter("otp");
+        HttpSession mySession = request.getSession();
+        String otp = (String) mySession.getAttribute("otp");
+        Cookie[] cookies = request.getCookies();
+        String otpR = "";
+        for (Cookie cooky : cookies) {
+            if(cooky.getName().equals("otpR")){
+                otpR = cooky.getValue();
+                break;
+            }
+        }
+        RequestDispatcher dispatcher = null;
+
+        if (value.equals(otpR)) {
+            request.setAttribute("email", request.getParameter("email"));
+//            request.setAttribute("status", "success");
+            dispatcher = request.getRequestDispatcher("newPass.jsp");
+            dispatcher.forward(request, response);
+
+        } else {
+            request.setAttribute("message", "Incorrect OTP, please enter again.");
+
+            dispatcher = request.getRequestDispatcher("enterOTP.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,15 +62,15 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
+            out.println("<title>Servlet ValidateOTP</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ValidateOTP at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,24 +102,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         //processRequest(request, response);
-        
-        String username = request.getParameter("user");
-        String password = request.getParameter("pass");
-
-        AccountDAO ac = new AccountDAO();
-        Customers account = ac.LoginAccount(username, password);
-
-        if (account != null) {
-            // User authenticated successfully
-            HttpSession session = request.getSession();
-            session.setAttribute("account", account);
-            response.sendRedirect("Layout/index_1.html");
-            
-        } else {
-            // Authentication failed
-            response.sendRedirect("loginn.jsp");
-        }
+        processRequest(request, response);
     }
 
     /**
