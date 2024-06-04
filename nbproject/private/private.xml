@@ -10,12 +10,14 @@
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Controller/ForgotPassword.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/DBContext/DBContext.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/ForgotPAssword.jsp</file>
+            <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Controller/NewPassword.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/Layout/style.css</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/META-INF/context.xml</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Model/Accounts.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/newPass.jsp</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Controller/Login.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/web/Layout/index_1.html</file>
+            <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Controller/ValidateOTP.java</file>
             <file>file:/D:/a_SUMMER24/SWP391/Project_SWP391/SWP391_Group2/src/java/Model/Customers.java</file>
         </group>
     </open-files>

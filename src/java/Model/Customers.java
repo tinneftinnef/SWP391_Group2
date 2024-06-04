@@ -10,13 +10,13 @@ package Model;
  */
 public class Customers {
     private int CustomerID, phone;
-    private String CustomerName, address, email, accName, password, User_type;
+    private String CustomerName, address, email, accName, password, User_type,idFacebook;
     
     public Customers(){
         
     }
 
-    public Customers(int CustomerID, int phone, String CustomerName, String address, String email, String accName, String password, String User_type) {
+    public Customers(int CustomerID, int phone, String CustomerName, String address, String email, String accName, String password, String User_type, String idFacebook) {
         this.CustomerID = CustomerID;
         this.phone = phone;
         this.CustomerName = CustomerName;
@@ -26,6 +26,15 @@ public class Customers {
         this.password = password;
         this.User_type = User_type;
     }
+
+    public String getIdFacebook() {
+        return idFacebook;
+    }
+
+    public void setIdFacebook(String idFacebook) {
+        this.idFacebook = idFacebook;
+    }
+    
 
     public int getCustomerID() {
         return CustomerID;
@@ -90,5 +99,4 @@ public class Customers {
     public void setUser_type(String User_type) {
         this.User_type = User_type;
     }
-    
 }
