@@ -10,6 +10,7 @@
         <!-- Favicon-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <!-- Bootstrap icons-->
 
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -42,7 +43,7 @@
         <!-- Navigation-->
 
 
-
+        <%@include file="../header.jsp" %>
         <!-- Section-->
         <div class="text-center mt-4"><h3>List Category</h3></div>
         <section class="py-5 container-fluid mt-1">
@@ -95,7 +96,7 @@
 
 
 
-
+                <a href="../home" class="btn btn-info">Back to home</a>
             </div>
 
 
@@ -108,5 +109,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script>var baseURL = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, baseURL);</script>
     </body>
 </html>

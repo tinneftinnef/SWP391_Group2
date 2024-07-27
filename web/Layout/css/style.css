@@ -24,9 +24,9 @@ CSS STRUCTURE:
 /** 1. VARIABLES
 --------------------------------------------------------------*/
 :root {
-  --accent-color:             #717171;
+  --accent-color:             black;
   --white-color:              #fff;
-  --black-color:              #000;
+  --black-color:              #000; 
   --gray-color:               #F3F3F3;
   --gray-color-300:           #D8D8D8;
   --gray-color-500:           #AEAEAE;
@@ -36,11 +36,10 @@ CSS STRUCTURE:
   --bs-primary-rgb:           114,174,200;
   --light-color:              #f8f9fa;
   --dark-color:               #212529;
-  --light-blue-color:         #EDF1F3;
+  --light-blue-color:         #C0C0C0;
   --navbar-color-color:       #131814;
   --swiper-theme-color:       #4A4A4A;
   --swiper-pagination-color:  #4A4A4A;
-
 }
 
 /* on mobile devices below 600px
@@ -113,8 +112,14 @@ a:hover {
     background: var(--light-blue-color);
 }
 
+
 /* - Section Padding
 --------------------------------------------------------------*/
+#header-nav,
+#footer-bottom{
+    background-color: #ff0000;
+    color: #fff;
+}
 .padding-xsmall {
   padding-top: 0.5em;
   padding-bottom: 0.5em;

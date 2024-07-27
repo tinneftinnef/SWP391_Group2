@@ -1,121 +1,99 @@
-<%-- 
-    Document   : products_edit
-    Created on : May 20, 2024, 7:06:45 AM
-    Author     : SHD
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Add Product </title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit Product</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
-            .navi{
-                justify-content: center;
+            .form-group {
+                margin-bottom: 1rem;
             }
-            th{
-                text-align: center;
-                vertical-align: middle;
+            .btn-group {
+                margin-top: 1rem;
             }
-            td{
-                text-align: center;
-                vertical-align: middle;
-            }
-            button{
-                width: 120px;
-            }
-            a{
-                text-decoration: none;
-                color: white;
-            }
-            a:hover{
-                color: white;
+            .error {
+                color: red;
             }
         </style>
     </head>
     <body>
-        <!-- Navigation-->
+        <div class="container mt-4">
+            <h2 class="text-center mb-4">Edit Product</h2>
+            <%-- Display error message if any --%>
+            <c:if test="${not empty error}">
+                <div class="alert alert-danger">${error}</div>
+            </c:if>
 
+            <form method="post" action="edit-product">
+                <input type="hidden" name="id" value="${product.productId}">
 
-
-        <!-- Section-->
-        <div class="text-center mt-4"><h3>Edit Product</h3></div>
-        <section class="py-5 container-fluid mt-1">
-            <div class="row">
-                <div class="col-2"></div>
-                <div class="col-8">
-                    <form method="post" action="add-product">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" required="" id="exampleInputEmail1"  aria-describedby="emailHelp" name="name" value="${p.getProductName()}">
-                           
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Category</label>
-                            <select name="cate_id" class="form-control">
-                            
-                            <c:forEach var="x" items="${listC}">
-                                <option ${p.getCateId() == x.getCateId() ? "selected":""} value="${x.getCateId()}">${x.getCateName()}</option>
-                            </c:forEach>
-
-                        </select>
-                        </div>
-                         <div class="form-group mt-2">
-                            
-                             
-                            <label for="exampleInputPassword1">Image Link</label>
-                            <input required type="text" class="form-control" id="exampleInputPassword1" name="image" value="${p.getImage()}">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Detail</label>
-                            <textarea required name="detail" class="form-control">${p.getDescription()}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Price</label>
-                            <input required type="number" min="0" step="0.1" name="price" value="${p.getPrice()}" class="form-control" id="exampleInputEmail1"  aria-describedby="emailHelp" >
-                           
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Stock</label>
-                            <input required type="number" value="${p.getStock()}" name="stock" class="form-control" id="exampleInputEmail1"  aria-describedby="emailHelp" >
-                           
-                        </div>
-                            <input required type="hidden" value="${p.getProductId()}" name="id" class="form-control" id="exampleInputEmail1"  aria-describedby="emailHelp" >
-                        <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                        <button type="button" class="btn btn-primary mt-2"><a href="products">Back</a></button>
-                    </form>
-
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="${product.productName}" required>
                 </div>
 
+                <div class="form-group">
+                    <label for="cate_id">Category</label>
+                    <select class="form-control" id="cate_id" name="cate_id">
+                        <c:forEach var="category" items="${listC}">
+                            <option value="${category.cateId}" ${product.cateId == category.cateId ? 'selected' : ''}>${category.cateName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
 
+                <div class="form-group">
+                    <label for="image">Image Link</label>
+                    <input type="text" class="form-control" id="image" name="image" value="${product.image}" required>
+                </div>
 
+                <div class="form-group">
+                    <label for="detail">Detail</label>
+                    <textarea class="form-control" id="detail" name="detail" rows="3" required>${product.description}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" value="${product.price}" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>Serial Numbers:</label>
+                    <ul id="serialList">
+                        <c:forEach var="serial" items="${product.serialNumbers}">
+                            <li>
+                                <input class="form-control" type="text" name="serialNumbers" value="${serial}" readonly>
+                                <button type="button" class="btn btn-sm btn-danger removeSerial">Remove</button>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-sm btn-primary addSerial">Add Serial</button>
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="products" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
 
+        <<script>
+            document.querySelector('.addSerial').addEventListener('click', function () {
+                var serialList = document.getElementById('serialList');
+                var li = document.createElement('li');
+                li.innerHTML = '<input class="form-control" type="text" name="serialNumbers" value="" required>' +
+                        '<button type="button" class="btn btn-sm btn-danger removeSerial">Remove</button>';
+                serialList.appendChild(li);
+            });
 
+            document.getElementById('serialList').addEventListener('click', function (e) {
+                if (e.target.classList.contains('removeSerial')) {
+                    e.target.parentNode.remove();
+                }
+            });
+        </script>
 
-
-            </div>
-            <div class="col-2"></div>
-
-
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
     </body>
 </html>
