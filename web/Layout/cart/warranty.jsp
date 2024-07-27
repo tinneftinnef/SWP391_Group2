@@ -242,7 +242,6 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Order</th>
-                                <th>Product</th>
                                 <th>Serial Number</th>
                                 <th>Status</th>
                                 <th>Request Date</th>
@@ -259,7 +258,6 @@
                                     <td>
                                         <a href="order-history?action=view&orderId=${warranty.orderId}">Order</a>
                                     </td>
-                                    <td>${warranty.productId == 0 ? "N/A" : ""}</td>
                                     <td>${warranty.serialNumber}</td>
                                     <td>${warranty.warrantyStatus}</td>
                                     <td>${warranty.requestDate}</td>

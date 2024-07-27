@@ -101,7 +101,6 @@
                                 <th>Image</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
-                                <th>Sub total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -119,12 +118,7 @@
                                     </td>
                                     <td style="align-items: center; justify-content: center;">${orderDetail.quantity}</td>
                                     <td style="align-items: center; justify-content: center;">
-                                        
                                         <fmt:formatNumber value="${product.price}" type="number" maxFractionDigits="0" />₫
-                                    </td>
-                                    <td style="align-items: center; justify-content: center;">
-                                        
-                                           <fmt:formatNumber value="${product.price * orderDetail.quantity}" type="number" maxFractionDigits="0" />₫
                                     </td>
                                 </tr>
                             </c:forEach>

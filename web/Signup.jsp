@@ -163,7 +163,7 @@
                 </div>
                 <div class="field">
                     <input name="address" type="text" required>
-                    <span class="fas fa-loca"></span>
+                    <span class="fas fa-location-arrow"></span>
                     <label>Address</label>
                 </div>
                 <div class="field">

@@ -81,7 +81,6 @@
                                             <a href="admin/products/edit?id=${x.getProductId()}"><img src="${x.getImage()}"  style="height: 200px;width: 200px"/></a>
                                         </td>
                                         <td>${x.getStock()}</td>
-                                         
                                         <td><fmt:formatNumber value="${x.getPrice()}" type="number" maxFractionDigits="0" />₫</td>
                                         <td>
                                             <button type="submit" class="btn btn-info"><a href="edit-product?id=${x.getProductId()}">Edit</a></button>
@@ -91,7 +90,6 @@
                                 </c:forEach>
                             </tbody>
                         </table>
-
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
                                 <c:forEach begin="1" end="${totalPage}" var="i">
@@ -99,8 +97,6 @@
                                     </c:forEach>
                             </ul>
                         </nav>
-
-
                     </div>
 
 

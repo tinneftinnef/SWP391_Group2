@@ -1,48 +1,34 @@
 <%-- 
-    Document   : view-warranty
-    Created on : Jul 6, 2024, 2:05:21 AM
+    Document   : home
+    Created on : Jun 3, 2024, 12:28:30 AM
     Author     : HP
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="getProduct" class="DAO.ProductDAO" />
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <title>Warranry</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--===============================================================================================-->	
-        <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/vendor/bootstrap/css/bootstrap.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/fonts/iconic/css/material-design-iconic-font.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/fonts/linearicons-v1.0.0/icon-font.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/vendor/animate/animate.css">
-        <!--===============================================================================================-->	
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/vendor/css-hamburgers/hamburgers.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/vendor/animsition/css/animsition.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/vendor/select2/select2.min.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/vendor/perfect-scrollbar/perfect-scrollbar.css">
-        <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/css/util.css">
-        <link rel="stylesheet" type="text/css" href="./Layout/cart/css/main.css">
+        <title>Fministore</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="author" content="">
+        <meta name="keywords" content="">
+        <meta name="description" content="">
         <link rel="stylesheet" type="text/css" href="./Layout/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="./Layout/css/style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <!--===============================================================================================-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+        <!-- script
+        ================================================== -->
+        <script src="./Layout/js/modernizr.js"></script>
     </head>
-    <body class="animsition">
+    <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
         <title>Search</title>
@@ -126,7 +112,7 @@
     <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
         <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="home">
                     <img src="Layout/images/main-logo.png" class="logo">
                 </a>
                 <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,7 +122,7 @@
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
                     <div class="offcanvas-header px-4 pb-0">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="home">
                             <img src="Layout/images/main-logo.png" class="logo">
                         </a>
                         <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
@@ -166,17 +152,15 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage</a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="about.html" class="dropdown-item">Manage User</a>
-                                        </li>
+                                       
                                         <li>
                                             <a href="admin/products" class="dropdown-item">Manage Products</a>
                                         </li>
                                         <li>
-                                            <a href="cart.html" class="dropdown-item">Manage Order</a>
+                                            <a href="admin/order" class="dropdown-item">Manage Order</a>
                                         </li>
                                         <li>
-                                            <a href="cart.html" class="dropdown-item">Manage Warranty</a>
+                                            <a href="admin/manager-warranty" class="dropdown-item">Manage Warranty</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -193,7 +177,7 @@
                                         </li>
                                         <li class="nav-item dropdown">
                                             <c:if test="${sessionScope.customerSave != null || sessionScope.adminSave != null}">
-                                                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Wellcome, ${sessionScope.customerSave}</a>
+                                                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Wellcome, ${sessionScope.customerFullname}</a>
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a href="profile" class="dropdown-item">Profile</a>
@@ -463,41 +447,11 @@
             </div>
         </div>
     </div>
-    <!--===============================================================================================-->	
-    <script src="./Layout/cart/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="./Layout/cart/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="./Layout/cart/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script>
-        $(".js-select2").each(function () {
-            $(this).select2({
-                minimumResultsForSearch: 20,
-                dropdownParent: $(this).next('.dropDownSelect2')
-            });
-        })
-    </script>
-    <!--===============================================================================================-->
-    <script src="./Layout/cart/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="./Layout/cart/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script>
-        $('.js-pscroll').each(function () {
-            $(this).css('position', 'relative');
-            $(this).css('overflow', 'hidden');
-            var ps = new PerfectScrollbar(this, {
-                wheelSpeed: 1,
-                scrollingThreshold: 1000,
-                wheelPropagation: false,
-            });
-
-            $(window).on('resize', function () {
-                ps.update();
-            })
-        });
-    </script>
-    <!--===============================================================================================-->
+    <script src="./Layout/js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="./Layout/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./Layout/js/plugins.js"></script>
+    <script type="text/javascript" src="./Layout/js/script.js"></script>
     <script src="./Layout/cart/js/main.js"></script>
     <script>var baseURL = window.location.origin + window.location.pathname;
         window.history.replaceState({}, document.title, baseURL);</script>

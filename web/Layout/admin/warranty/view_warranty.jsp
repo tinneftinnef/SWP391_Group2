@@ -124,7 +124,6 @@
                                     <fmt:formatNumber value="${product.price}" type="number" maxFractionDigits="0" />₫
                                 </td>
                                 <td style="align-items: center; justify-content: center;">
-
                                     <fmt:formatNumber value="${product.price * orderDetail.quantity}" type="number" maxFractionDigits="0" />₫
                                 </td>
                             </tr>
@@ -275,7 +274,7 @@
                         <div class="col-md-12">
                             <c:if test="${warranty.img != null}">
                                 <p class="font-weight-bold">Image:</p>
-                                <img src="../${warranty.img}" class="img-fluid mt-3" alt="Warranty Image">
+                                <img style="width: 33%" src="../${warranty.img}" class="img-fluid mt-3" alt="Warranty Image">
                             </c:if>
                         </div>
                     </div>

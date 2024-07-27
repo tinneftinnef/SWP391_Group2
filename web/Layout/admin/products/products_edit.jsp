@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<jsp:useBean id="getIsExistSerial" class="DAO.WarrantyDAO" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,16 +58,24 @@
                 </div>
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="number" class="form-control" id="price" name="price" value="${product.price}" step="0.01" required>
+                    <input type="number" class="form-control" id="price" name="price" value="${formattedPrice}" step="0.01" required>
                 </div>
                 <div class="form-group">
                     <label>Serial Numbers:</label>
                     <ul id="serialList">
                         <c:forEach var="serial" items="${product.serialNumbers}">
-                            <li>
-                                <input class="form-control" type="text" name="serialNumbers" value="${serial}" readonly>
-                                <button type="button" class="btn btn-sm btn-danger removeSerial">Remove</button>
-                            </li>
+                            <c:set var="seri" value="${getIsExistSerial.checkWarrantiesByInOrder(serial)}" />
+                            <c:if test="${seri == null}">
+                                <li>
+                                    <input class="form-control" type="text" name="serialNumbers" value="${serial}" readonly>
+                                    <button type="button" class="btn btn-sm btn-danger removeSerial">Remove</button>
+                                </li>
+                            </c:if>
+                            <c:if test="${seri != null}">
+                                <li>
+                                    <input class="form-control" type="text" name="serialNumbersBought" value="${serial}" readonly>
+                                </li>
+                            </c:if>
                         </c:forEach>
                     </ul>
                 </div>
