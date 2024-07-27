@@ -1,16 +1,15 @@
 <%-- 
-    Document   : searchResults
-    Created on : Jun 3, 2024, 9:42:41 PM
+    Document   : home
+    Created on : Jun 3, 2024, 12:28:30 AM
     Author     : HP
 --%>
-
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ministore</title>
+        <title>Fministore</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,9 +106,6 @@
                 <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="${key}" name="key" />
                 <button type="submit" class="search-submit"><svg class="search"><use xlink:href="#search"></use></svg></button>
             </form>
-
-
-
         </div>
     </div>
 
@@ -139,8 +135,7 @@
                             
                             <li class="nav-item">
                                 <a class="nav-link me-4" href="product">Product</a>
-                            </li>
-                           
+                            
                             <li class="nav-item">
                                 <a class="nav-link me-4" href="order-history">History order</a>
                             </li>
@@ -152,16 +147,16 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage</a>
                                     <ul class="dropdown-menu">
+                                       
                                         <li>
-                                            <a href="about.html" class="dropdown-item">Manage User</a>
+                                            <a href="admin/products" class="dropdown-item">Manage Products</a>
                                         </li>
                                         <li>
-                                            <a href="admin/products/products.jsp" class="dropdown-item">Manage Products</a>
+                                            <a href="admin/order" class="dropdown-item">Manage Order</a>
                                         </li>
                                         <li>
-                                            <a href="cart.html" class="dropdown-item">Manage Warranty</a>
+                                            <a href="admin/manager-warranty" class="dropdown-item">Manage Warranty</a>
                                         </li>
-
                                     </ul>
                                 </li>
                             </c:if>
@@ -177,7 +172,7 @@
                                         </li>
                                         <li class="nav-item dropdown">
                                             <c:if test="${sessionScope.customerSave != null || sessionScope.adminSave != null}">
-                                                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Wellcome, ${sessionScope.customerSave}</a>
+                                                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Wellcome, ${sessionScope.customerFullname}</a>
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a href="profile" class="dropdown-item">Profile</a>
@@ -199,7 +194,7 @@
                                             </c:if>
                                         </li>
                                         <li>
-                                            <a href="cart.html">
+                                            <a href="cart">
                                                 <svg class="cart">
                                                 <use xlink:href="#cart"></use>
                                                 </svg>
