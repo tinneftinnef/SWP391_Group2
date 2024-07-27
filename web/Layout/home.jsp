@@ -132,15 +132,11 @@
                             <li class="nav-item">
                                 <a class="nav-link me-4 active" href="home">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link me-4" href="#company-services">Services</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link me-4" href="product">Product</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link me-4" href="#yearly-sale">Sale</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link me-4" href="order-history">History order</a>
                             </li>
