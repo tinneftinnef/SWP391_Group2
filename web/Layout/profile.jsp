@@ -1,15 +1,15 @@
 <%-- 
-    Document   : profile
-    Created on : Jul 11, 2024, 3:44:42 AM
+    Document   : home
+    Created on : Jun 3, 2024, 12:28:30 AM
     Author     : HP
 --%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ministore</title>
+        <title>Fministore</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,10 +26,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
         <!-- script
         ================================================== -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+        <script src="./Layout/js/modernizr.js"></script>
     </head>
     <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -106,33 +103,16 @@
         <div class="search-popup-container">
 
             <form role="search" method="get" class="search-form" action="search">
-                <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" name="key" />
+                <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="${key}" name="key" />
                 <button type="submit" class="search-submit"><svg class="search"><use xlink:href="#search"></use></svg></button>
             </form>
-
-            <h5 class="cat-list-title">Browse Categories</h5>
-
-            <ul class="cat-list">
-                <li class="cat-list-item">
-                    <a href="#" title="MSI">MSI</a>
-                </li>
-                <li class="cat-list-item">
-                    <a href="#" title="Acer">Acer</a>
-                </li>
-                <li class="cat-list-item">
-                    <a href="#" title="Dell">Dell</a>
-                </li>
-                <li class="cat-list-item">
-                    <a href="#" title="Macbook">Macbook</a>
-
-            </ul>
         </div>
     </div>
 
     <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
         <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="home">
                     <img src="Layout/images/main-logo.png" class="logo">
                 </a>
                 <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,7 +122,7 @@
                 </button>
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
                     <div class="offcanvas-header px-4 pb-0">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="home">
                             <img src="Layout/images/main-logo.png" class="logo">
                         </a>
                         <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
@@ -152,15 +132,10 @@
                             <li class="nav-item">
                                 <a class="nav-link me-4 active" href="home">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link me-4" href="#company-services">Services</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link me-4" href="product">Product</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link me-4" href="#yearly-sale">Sale</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link me-4" href="order-history">History order</a>
                             </li>
@@ -172,16 +147,16 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Manage</a>
                                     <ul class="dropdown-menu">
+                                       
                                         <li>
-                                            <a href="about.html" class="dropdown-item">Manage User</a>
+                                            <a href="admin/products" class="dropdown-item">Manage Products</a>
                                         </li>
                                         <li>
-                                            <a href="admin/products/products.jsp" class="dropdown-item">Manage Products</a>
+                                            <a href="admin/order" class="dropdown-item">Manage Order</a>
                                         </li>
                                         <li>
-                                            <a href="cart.html" class="dropdown-item">Manage Warranty</a>
+                                            <a href="admin/manager-warranty" class="dropdown-item">Manage Warranty</a>
                                         </li>
-
                                     </ul>
                                 </li>
                             </c:if>
@@ -197,7 +172,7 @@
                                         </li>
                                         <li class="nav-item dropdown">
                                             <c:if test="${sessionScope.customerSave != null || sessionScope.adminSave != null}">
-                                                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Wellcome, ${sessionScope.customerSave}</a>
+                                                <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Wellcome, ${sessionScope.customerFullname}</a>
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a href="profile" class="dropdown-item">Profile</a>
@@ -212,14 +187,14 @@
                                                     </li>
                                                 </ul>
                                             </c:if>
-                                        <c:if test="${sessionScope.customerSave == null && sessionScope.adminSave == null}">
-                                            <a href="login">
-                                                Login
-                                            </a>
-                                        </c:if>
+                                            <c:if test="${sessionScope.customerSave == null && sessionScope.adminSave == null}">
+                                                <a href="login">
+                                                    Login
+                                                </a>
+                                            </c:if>
                                         </li>
                                         <li>
-                                            <a href="cart.html">
+                                            <a href="cart">
                                                 <svg class="cart">
                                                 <use xlink:href="#cart"></use>
                                                 </svg>
